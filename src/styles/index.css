@@ -2,11 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 
   width: 100%;
   height: 80px;
   padding: 15px 20px;
   background-color: #FFF;
+
+  top: 0;
+  z-index: 99;
 }
 .header .refresh {
   display: inline-block;
@@ -75,6 +79,11 @@
   font-weight: 500;
 }
 
+/* Menu Hamburguer */
+.hamburguer-menu, .hamburguer-menu-container {
+  display: none;
+}
+
 /* Main */
 .main {
   display: flex;
@@ -123,10 +132,6 @@
 }
 
 /* Candidates */
-/* .candidates-container {
-  display: inline-block;
-  width: 100%;
-} */
 
 #myCarousel > .carousel-indicators > button {
   background-color: #000;
@@ -184,4 +189,75 @@
 
 .footer > h3 {
   margin-bottom: 5px;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 560px) {
+  .header .refresh, .header__nav {
+    display: none;
+  }
+
+  .hamburguer-menu {
+    width: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    margin: auto 0;
+    box-sizing: border-box;
+    padding-block: 5px;
+  }
+
+  .menu-streak {
+    width: 40px;
+    height: 5px;
+    border-radius: 50px;
+    background-color: #042429;
+    transition: .3s;
+  }
+
+  #x-menu:checked + .hamburguer-menu > .menu-streak:first-child {
+    transform: translateY(12px) rotate(45deg);
+  }
+
+  #x-menu:checked + .hamburguer-menu > .menu-streak:nth-child(2) {
+    opacity: 0;
+  }
+
+  #x-menu:checked + .hamburguer-menu > .menu-streak:last-child {
+    transform: translateY(-12px) rotate(135deg);
+  }
+
+  .hamburguer-menu-container {
+    display: initial;
+  }
+
+  .hamburguer-nav {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 100dvh;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    background-color: #FFF;
+    transform: translateY(-100dvh);
+    transition: transform .5s;
+  }
+
+  .hamburguer-nav_list {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .hamburguer-nav_list_item > a {
+    color: #042429;
+  }
 }
