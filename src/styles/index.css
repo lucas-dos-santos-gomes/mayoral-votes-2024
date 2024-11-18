@@ -121,3 +121,67 @@
   color: #042429;
   font-weight: 500;
 }
+
+/* Candidates */
+/* .candidates-container {
+  display: inline-block;
+  width: 100%;
+} */
+
+#myCarousel > .carousel-indicators > button {
+  background-color: #000;
+}
+
+#myCarousel > button > .carousel-control-prev-icon {
+  background-image: url(../img/left-arrow.png);
+}
+
+#myCarousel > button > .carousel-control-next-icon {
+  background-image: url(../img/right-arrow.png);
+}
+
+.carousel-item {
+  height: 400px;
+  width: 100%;
+  background-color: #FFF;
+}
+
+.carousel-item > .container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+}
+
+.carousel-item img {
+  height: 80%;
+}
+
+.carousel-item .candidate-info {
+  height: 80%;
+  font-size: 1.8rem;
+}
+
+.carousel-item .candidate-info > h3 {
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.carousel-item .candidate-info > p {
+  margin-bottom: 15px;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+
+  background-color: #000;
+  color: #777;
+}
+
+.footer > h3 {
+  margin-bottom: 5px;
+}

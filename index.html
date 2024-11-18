@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="./src/styles/reset.css">
   <link rel="stylesheet" href="./src/styles/index.css">
   <link rel="shortcut icon" href="./src/img/sp-black-icon.png" type="image/x-icon">
@@ -16,10 +17,10 @@
     <nav class="header__nav">
       <ul class="header__nav__list">
         <li class="header__nav__list__items">
-          <a href="" class="header__nav__list__items__link">Início</a>
+          <a href="./index.html" class="header__nav__list__items__link">Início</a>
         </li>
         <li class="header__nav__list__items">
-          <a href="" class="header__nav__list__items__link">Conheça seu Candidato</a>
+          <a href="./index.html#myCarousel" class="header__nav__list__items__link">Conheça seu Candidato</a>
         </li>
         <li class="header__nav__list__items">
           <a href="" class="header__nav__list__items__link">Resultado</a>
@@ -28,10 +29,136 @@
     </nav>
     <a class="login-link" href="./src/pages/login.html">Entrar</a>
   </header>
+
   <main class="main">
     <h1>Eleições</h1>
     <h2>São Paulo</h2>
     <a class="vote-link" href="./src/pages/vote.html">Vote aqui</a>
   </main>
+
+  <!-- <section class="candidates-container"> -->
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <img src="./src/img/ricardo-nunes.jpg" alt="Candidato Ricardo Nunes" />
+            <div class="candidate-info">
+              <h3>Nome completo</h3>
+              <p>Ricardo Luis Reis Nunes</p>
+              <h3>Número na urna</h3>
+              <p>15</p>
+              <h3>Partido</h3>
+              <p>MDB - Movimento Democrático Brasileiro</p>
+              <h3>Informações</h3>
+              <p>Ricardo Luís Reis Nunes, prefeito da cidade de São Paulo, é paulistano, empresário e morador da Zona Sul da cidade. Filiado ao Movimento Democrático Brasileiro (MDB) desde aos 18 anos de idade e sempre atuou em defesa da democracia.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <div class="container">
+            <img src="./src/img/guilherme-boulos.jpg" alt="Candidato Guilherme Boulos" />
+            <div class="candidate-info">
+              <h3>Nome completo</h3>
+              <p>Guilherme Castro Boulos</p>
+              <h3>Número na urna</h3>
+              <p>50</p>
+              <h3>Partido</h3>
+              <p>PSOL - Partido Socialismo e Liberdade</p>
+              <h3>Informações</h3>
+              <p>Boulos é coordenador nacional do Movimento dos Trabalhadores Sem Teto. É filósofo, professor e mestre em psiquiatria pela Universidade de São Paulo. Em 2022, foi eleito o deputado de esquerda mais votado da história do Brasil.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <div class="container">
+            <img src="./src/img/pablo-marcal.jpg" alt="Candidato Pablo Marçal" />
+            <div class="candidate-info">
+              <h3>Nome completo</h3>
+              <p>Pablo Henrique Costa Marçal</p>
+              <h3>Número na urna</h3>
+              <p>28</p>
+              <h3>Partido</h3>
+              <p>PRTB - Partido Renovador Trabalhista Brasileiro</p>
+              <h3>Informações</h3>
+              <p>Pablo Marçal é empresário goiano, escritor de autoajuda e político. Se lançou à presidência pelo Pros em 2022, mas teve a candidatura indeferida pela Justiça Eleitoral em função de disputas pelo comando do partido. Chegou a ser eleito deputado federal no mesmo ano, ainda pelo Pros, mas teve a candidatura indeferida novamente antes de tomar posse. Concorre à Prefeitura de São Paulo nas eleições de 2024.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <div class="container">
+            <img src="./src/img/tabata.jpg" alt="Candidato Tabata Amaral" />
+            <div class="candidate-info">
+              <h3>Nome completo</h3>
+              <p>Tabata Cláudia Amaral de Pontes</p>
+              <h3>Número na urna</h3>
+              <p>40</p>
+              <h3>Partido</h3>
+              <p>PSB - Partido Socialista Brasileiro</p>
+              <h3>Informações</h3>
+              <p>Tabata Amaral concorre pela primeira vez à Prefeitura de São Paulo. Deputada federal no segundo mandato e filiada ao PSB, ela tem a educação como principal bandeira política e é apoiada na disputa municipal pelo vice-presidente da República, Geraldo Alckmin do PSB.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <div class="container">
+            <img src="./src/img/datena.jpg" alt="Candidato Datena" />
+            <div class="candidate-info">
+              <h3>Nome completo</h3>
+              <p>Jose Luiz Datena</p>
+              <h3>Número na urna</h3>
+              <p>45</p>
+              <h3>Partido</h3>
+              <p>PSDB - Partido da Social Democracia Brasileira</p>
+              <h3>Informações</h3>
+              <p>Nascido em Ribeirão Preto, José Luiz Datena iniciou sua carreira como repórter esportivo de rádio e TV. Desde 1998, apresentou programas de TV, tendo passado por Record, Rede TV! e Band, período em que consolidou o formato do programa policial. Em 2003, assumiu o Brasil Urgente, da Band, com alguns períodos de afastamento. Datena flerta com a carreira política desde 2016. Ele disputará a Prefeitura de São Paulo em 2024 depois de ter desistido de concorrer em outras quatro ocasiões.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <div class="container">
+            <img src="./src/img/maria-helena.jpg" alt="Candidata Maria Helena" />
+            <div class="candidate-info">
+              <h3>Nome completo</h3>
+              <p>Marina Helena Cunha Pereira Santos</p>
+              <h3>Número na urna</h3>
+              <p>30</p>
+              <h3>Partido</h3>
+              <p>Partido Novo</p>
+              <h3>Informações</h3>
+              <p>A economista Marina Helena é a candidata do Novo à Prefeitura de São Paulo. Deputada federal suplente, trabalhou em bancos e foi diretora de Desestatização do Ministério da Economia durante a gestão Paulo Guedes. Defensora do empreendedorismo e ex-presidente do Instituto Millenium, que defende ideias liberais, ela é mãe de duas crianças, a mais nova delas nascida em março.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  <!-- </section> -->
+
+  <footer class="footer">
+    <h3>Sistemas de Informação - Uninove</h3>
+    <p>@ Copyright 2024 - Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
