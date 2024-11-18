@@ -11,6 +11,7 @@
 .header .refresh {
   display: inline-block;
   height: 100%;
+  width: 90px;
 }
 
 .header .refresh .logo {
@@ -76,6 +77,12 @@
 
 /* Main */
 .main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
   width: 100%;
   height: calc(100dvh - 80px);
 
@@ -85,4 +92,32 @@
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.8);
   background-blend-mode: darken;
+}
+
+.main > h1, .main > h2 {
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  font-size: 4rem;
+  color: #FFF;
+}
+
+.main > .vote-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 180px;
+  height: 60px;
+  margin-top: 50px;
+  
+  font-size: 2.5rem;
+  color: #FFF;
+  border: 3px solid #FFF;
+  transition: .2s;
+}
+
+.main > .vote-link:hover {
+  background-color: #FFF;
+  color: #042429;
+  font-weight: 500;
 }
