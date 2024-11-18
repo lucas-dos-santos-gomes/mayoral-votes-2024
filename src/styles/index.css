@@ -28,6 +28,7 @@
 }
 
 .header__nav__list__items__link {
+  position: relative;
   font-size: 1.8rem;
   font-weight: 500;
 
@@ -37,6 +38,20 @@
 .header__nav__list__items__link:hover {
   color: #1296aa;
 }
+.header__nav__list__items__link::after {
+  position: absolute;
+  bottom: 0;
+  left: 1px;
+  content: " ";
+  width: 0;
+  height: 2px;
+  background-color: #1296aa;
+  transition: 0.4s;
+}
+.header__nav__list__items__link:hover::after {
+  width: 99%;
+}
+
 
 .login-link {
   display: inline-flex;
