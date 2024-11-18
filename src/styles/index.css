@@ -112,11 +112,7 @@
 
 .main > .vote-link {
   display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 180px;
-  height: 60px;
+  padding: 15px 27px;
   margin-top: 50px;
   
   font-size: 2.5rem;
@@ -192,6 +188,15 @@
 }
 
 /* Media Queries */
+@media screen and (max-width: 992px) {
+  .carousel-item .candidate-info {
+    height: auto;
+  }
+  .carousel-item .candidate-info > h3:nth-child(7),
+  .carousel-item .candidate-info > p:last-child {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 560px) {
   .header .refresh, .header__nav {
@@ -259,5 +264,28 @@
 
   .hamburguer-nav_list_item > a {
     color: #042429;
+  }
+
+  .main > h1, .main > h2 {
+    font-size: 3rem;
+  }
+
+  .main > .vote-link {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .carousel-item > .container {
+    flex-direction: column;
+    padding-top: 15px;
+  }
+
+  .carousel-item img {
+    height: 150px;
+  }
+
+  .carousel-item .candidate-info {
+    font-size: 1.6rem;
   }
 }
