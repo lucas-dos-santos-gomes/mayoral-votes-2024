@@ -299,3 +299,25 @@ body {
     width: 143.67px;
   }
 }
+
+@media screen and (max-width: 880px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+  .forms {
+    padding: 0 20px;
+  }
+  .overlay-panel {
+    width: 40%;
+    padding: 0 20px;
+  }
+  #overlayBtn {
+    top: 365px;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  
+}
