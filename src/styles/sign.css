@@ -1,0 +1,13 @@
+:root {
+  --linear-grad: linear-gradient(to right, #141E30, #243B55);
+  --grad-clr1: #141E30;
+  --grad-clr2: #243B55;
+}
+
+body {
+  height: 100vh;
+  background: #f6f5f7;
+  display: grid;
+  place-content: center;
+  font-family: 'Poppins', sans-serif;
+}
