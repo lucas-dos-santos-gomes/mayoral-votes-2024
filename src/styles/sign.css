@@ -67,6 +67,11 @@ body {
   margin: 0px 5px;
   height: 40px;
   width: 40px;
+  transition: background-color 200ms ease-out;
+}
+
+.social-container a:hover {
+  background-color: #141e301f;
 }
 
 .forms span {
