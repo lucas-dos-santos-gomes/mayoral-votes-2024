@@ -181,3 +181,17 @@
   background-color: var(--ballot-box-confirm-button-color);
 }
 
+@media screen and (max-width: 890px) {
+  .main {
+    height: auto;
+    min-height: calc(100dvh - 80px);
+    padding-block: 30px;
+  }
+  .voting-machine {
+    flex-direction: column;
+    height: auto;
+  }
+  .keyboard {
+    gap: 30px;
+  }
+}

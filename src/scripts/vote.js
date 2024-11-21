@@ -1,5 +1,5 @@
 import { indicators } from "./indicators.mjs"
-import { signOut, auth } from "./config.mjs";
+import { signOut, auth, verifyUser } from "./config.mjs";
 
 const profileLink = document.querySelector('.profile-link');
 const painelVoting = document.querySelector('.painel_voting');
@@ -14,6 +14,8 @@ const correctBtn = document.querySelector('.correct-btn');
 const confirmBtn = document.querySelector('.confirm-btn');
 
 let indicatorNumber = '';
+
+verifyUser(true);
 
 const keyAudio = new Audio('../assets/audios/key.wav');
 const confirmAudio = new Audio('../assets/audios/confirm.wav');
