@@ -193,5 +193,6 @@
   }
   .keyboard {
     gap: 30px;
+    width: 100%;
   }
 }
