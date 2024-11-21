@@ -194,5 +194,6 @@
   .keyboard {
     gap: 30px;
     width: 100%;
+    min-width: initial;
   }
 }
