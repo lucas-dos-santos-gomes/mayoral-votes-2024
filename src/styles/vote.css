@@ -197,3 +197,9 @@
     min-width: initial;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .keyboard_actions button {
+    font-size: 10px;
+  }
+}
