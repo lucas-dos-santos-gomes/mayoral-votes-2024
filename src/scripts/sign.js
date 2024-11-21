@@ -40,6 +40,7 @@ signupForm.onsubmit = ev => {
     
     await updateProfile(auth.currentUser, { displayName: name.value.trim() });
     alert('Cadastro realizado!');
+    sessionStorage.setItem('uid', JSON.stringify(credentials.user.uid));
     window.location.href = '/src/pages/vote.html';
   }).catch(error => {
     alert(authError(error.message));
@@ -54,6 +55,7 @@ signinForm.onsubmit = ev => {
 
   setPersistence(auth, browserLocalPersistence).then(signInWithEmailAndPassword(auth, email.value, password.value).then(credentials => {
     alert('Login feito com sucesso!');
+    sessionStorage.setItem('uid', JSON.stringify(credentials.user.uid));
     window.location.href = '/src/pages/vote.html';
   }).catch(error => {
     btn.removeAttribute('disabled');

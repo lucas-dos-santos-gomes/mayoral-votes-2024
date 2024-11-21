@@ -11,7 +11,7 @@ import {
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
-import { getFirestore, doc, setDoc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js"
+import { getFirestore, doc, setDoc, getDoc, updateDoc, deleteDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js"
 
 const firebaseConfig = {
   apiKey: "AIzaSyBTe1r4WbFLP7gSTJ-zDAlQbhSBo1BZrfg",
@@ -37,7 +37,7 @@ function verifyUser(exit) {
     if(user) {
       console.log('Usuário autenticado:', user);
     } else {
-      signout();
+      sessionStorage.removeItem('uid');
       if(exit) location.pathname = '/src/pages/sign.html';
     }
   });
@@ -64,6 +64,33 @@ const authError = (messageError, isLogin) => {
   };
 }
 
+// Função para verificar a existência de um documento em várias coleções
+async function documentExistsInCollections(documentId, collections) {
+  for (let collectionName of collections) {
+    const docRef = doc(db, collectionName, documentId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log(`Documento encontrado na coleção: ${collectionName}`);
+      return true;
+    }
+  }
+  console.log('Documento não encontrado em nenhuma coleção.');
+  return false;
+}
+
+async function countDocumentsInCollection(collectionName) {
+  try {
+    const collectionRef = collection(db, collectionName);
+    const querySnapshot = await getDocs(collectionRef);
+    const documentCount = querySnapshot.size;
+
+    console.log(`Número de documentos na coleção ${collectionName}: ${documentCount}`);
+    return documentCount;
+  } catch (error) {
+    console.error('Erro ao contar documentos:', error);
+  }
+}
+
 export {
   doc,
   setDoc,
@@ -83,4 +110,6 @@ export {
   signOut,
   setPersistence,
   browserLocalPersistence,
+  documentExistsInCollections,
+  countDocumentsInCollection,
 };

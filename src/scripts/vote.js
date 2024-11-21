@@ -1,5 +1,5 @@
 import { indicators } from "./indicators.mjs"
-import { signOut, auth, verifyUser } from "./config.mjs";
+import { signOut, auth, verifyUser, setDoc, doc, db, documentExistsInCollections } from "./config.mjs";
 
 const profileLink = document.querySelector('.profile-link');
 const painelVoting = document.querySelector('.painel_voting');
@@ -15,7 +15,16 @@ const confirmBtn = document.querySelector('.confirm-btn');
 
 let indicatorNumber = '';
 
+const uid = JSON.parse(sessionStorage.getItem('uid'));
+
 verifyUser(true);
+
+const collectionsToCheck = ['/voters/indicators/15/', '/voters/indicators/28/', '/voters/indicators/30/', '/voters/indicators/40/', '/voters/indicators/45/', '/voters/indicators/50/'];
+
+if(documentExistsInCollections(uid, collectionsToCheck)) {
+  painelVoting.classList.add('none');
+  painelEnd.classList.remove('none');
+}
 
 const keyAudio = new Audio('../assets/audios/key.wav');
 const confirmAudio = new Audio('../assets/audios/confirm.wav');
@@ -24,6 +33,7 @@ profileLink.onclick = (e) => {
   e.preventDefault();
   signOut(auth);
   alert('Você saiu da sua conta.');
+  sessionStorage.removeItem('uid');
   window.location.pathname = '/src/pages/sign.html';
 }
 
@@ -67,3 +77,11 @@ correctBtn.addEventListener('click', () => {
   indicatorImage.classList.toggle('none', true);
 });
 
+confirmBtn.addEventListener('click', async() => {
+  confirmAudio.play();
+  painelVoting.classList.add('none');
+  painelEnd.classList.remove('none');
+  if(indicators[indicatorNumber]) {
+    await setDoc(doc(db, `/voters/indicators/${indicatorNumber}/`, uid), { vote: true });
+  }
+});
