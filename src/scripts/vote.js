@@ -1,5 +1,7 @@
 import { indicators } from "./indicators.mjs"
+import { signOut, auth } from "./config.mjs";
 
+const profileLink = document.querySelector('.profile-link');
 const painelVoting = document.querySelector('.painel_voting');
 const painelEnd = document.querySelector('.painel_end');
 const painelNumber = document.querySelectorAll('.painel_voting_number');
@@ -15,6 +17,13 @@ let indicatorNumber = '';
 
 const keyAudio = new Audio('../assets/audios/key.wav');
 const confirmAudio = new Audio('../assets/audios/confirm.wav');
+
+profileLink.onclick = (e) => {
+  e.preventDefault();
+  signOut(auth);
+  alert('Você saiu da sua conta.');
+  window.location.pathname = '/src/pages/sign.html';
+}
 
 numberBtns.forEach(btn => {
   btn.addEventListener('click', () => {
