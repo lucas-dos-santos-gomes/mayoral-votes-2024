@@ -84,7 +84,7 @@ async function countDocumentsInCollection(collectionName) {
     const querySnapshot = await getDocs(collectionRef);
     const documentCount = querySnapshot.size;
 
-    console.log(`Número de documentos na coleção ${collectionName}: ${documentCount}`);
+    // console.log(`Número de documentos na coleção ${collectionName}: ${documentCount}`);
     return documentCount;
   } catch (error) {
     console.error('Erro ao contar documentos:', error);
