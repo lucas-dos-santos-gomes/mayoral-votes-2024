@@ -384,10 +384,7 @@ body {
   .form-container {
     padding: 0 20px;
   }
-  .container h1 {
-    font-size: 25px;
-  }
   .social-container {
-    margin: 0;
+    margin: 10px 0;
   }
 }
