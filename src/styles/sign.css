@@ -5,7 +5,7 @@
 }
 
 body {
-  height: 100vh;
+  height: 100dvh;
   background: #e8e7e9;
   display: grid;
   place-content: center;
@@ -37,6 +37,10 @@ body {
 
   color: #141E30;
   font-size: 30px;
+}
+
+.sign-up-container .return-link {
+  display: none;
 }
 
 .sign-up-container {
@@ -151,6 +155,10 @@ body {
 .form-container button:hover {
   background: #FFF;
   color: var(--grad-clr1);
+}
+
+.responsive-btn {
+  display: none;
 }
 
 .overlay-container { 
@@ -284,6 +292,19 @@ body {
   }
 }
 
+@keyframes showSlowly { 
+  0%{
+    transform: translateX(20%);
+    opacity: 0;
+    z-index: 1;
+  }
+  100% {
+    transform: initial;
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
 .btnScaled {
   animation: scaleBtn 0.6s;
 }
@@ -303,7 +324,7 @@ body {
 @media screen and (max-width: 880px) {
   .container {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     border-radius: 0;
   }
   .forms {
@@ -319,5 +340,54 @@ body {
 }
 
 @media screen and (max-width: 690px) {
-  
+  .responsive-btn {
+    display: initial;
+  }
+  .overlay-container {
+    display: none;
+  }
+  .form-container {
+    width: 100%;
+  }
+  .sign-up-container .return-link {
+    display: initial;
+  }  
+  .right-panel-active .sign-in-container {
+    transform: translateX(-20%);
+    opacity: 0;
+  }
+  .sign-up-container {
+    transform: translateX(20%);
+  }
+  .right-panel-active .sign-up-container {
+    transform: initial;
+    animation: showSlowly 0.6s;
+  }
+  .form-container .responsive-btn {
+    background-color: transparent;
+    color: #141E30;
+    margin-top: 10px;
+    border: none;
+    padding: 5px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .forms {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form-container {
+    padding: 0 20px;
+  }
+  .container h1 {
+    font-size: 25px;
+  }
+  .social-container {
+    margin: 0;
+  }
 }
