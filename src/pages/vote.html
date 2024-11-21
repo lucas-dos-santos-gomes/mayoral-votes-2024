@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/header.css">
   <link rel="stylesheet" href="../styles/vote.css">
   <link rel="shortcut icon" href="../assets/imgs/sp-black-icon.png" type="image/x-icon">
   <title>Vote | Eleições SP</title>
@@ -17,7 +18,7 @@
       <span class="menu-streak"></span>
       <span class="menu-streak"></span>
     </label>
-    <a class="refresh" href="./index.html">
+    <a class="refresh" href="../../index.html">
       <img class="logo" src="../assets/imgs/sp-black-icon-cutted.png" alt="Atualizar página" />
     </a>
     <nav class="header__nav">
@@ -55,6 +56,36 @@
 
   <main class="main">
     <div class="voting-machine">
+      <div class="painel">
+        <div class="painel_voting">
+          <div class="painel_voting_texts">
+            <div class="painel_voting_title">Seu voto para:</div>
+            <div class="painel_voting_type">Prefeito</div>
+            <div class="painel_voting_numbers">
+              <p>Números</p>
+              <div class="painel_voting_number">0</div>
+              <div class="painel_voting_number">0</div>
+            </div>
+            <div class="painel_voting_description">
+              Nome: <strong class="indicators-name">__________</strong>
+            </div>
+            <div class="painel_voting_description">
+              Partido: <strong class="indicators-entourage">__________</strong>
+            </div>
+          </div>
+          <div class="painel_voting_image">
+            <img src="../assets/imgs/ricardo-nunes.jpg" alt="Candidato escolhido" />
+          </div>
+          <div class="painel_voting_instructions">
+            <p>Aperte a tecla:</p>
+            <p>BRANCO para VOTAR EM BRANCO</p>
+            <p>LARANJA para CORRIGIR SEU VOTO</p>
+            <p>VERDE para CORRIGIR SEU VOTO</p>
+          </div>
+        </div>
+        <div class="painel_end none">Obrigado pelo seu voto!</div>
+      </div>
+
       <div class="keyboard">
         <div class="keyboard_numbers">
           <button>1</button>
