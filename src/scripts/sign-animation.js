@@ -10,4 +10,9 @@ function signAnimation() {
   container.classList.toggle('right-panel-active');
   overlayBtn.classList.remove('btnScaled');
   window.requestAnimationFrame(() => overlayBtn.classList.add('btnScaled'));
+  if(document.title.indexOf('Login') >= 0) {
+    document.title = 'Cadastre-se | Eleições SP'
+  } else {
+    document.title = 'Login | Eleições SP';
+  }
 }
