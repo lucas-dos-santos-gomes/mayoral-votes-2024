@@ -1,0 +1,239 @@
+:root {
+  --background-color: #333333;
+  --ballot-box-background-color:#dcdde1;
+  --ballot-box-keyboard-color:#2f3640;
+  --ballot-box-screen-color:#e3eef9;
+  --ballot-box-keyboard-button-color:#292e33;
+  --ballot-box-white-button-color:#eeeeee;
+  --ballot-box-correct-button-color:#ff841f;
+  --ballot-box-confirm-button-color:#7daa44;
+  --light-border-color:#cccccc;
+  --dark-border-color:#444444;
+  --light-text-color:#eeeeee;
+  --dark-text-color:#333333;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  height: 80px;
+  padding: 15px 20px;
+  background-color: #FFF;
+
+  top: 0;
+  z-index: 99;
+}
+.header .refresh {
+  display: inline-block;
+  height: 100%;
+  width: 90px;
+}
+
+.header .refresh .logo {
+  height: 100%;
+}
+
+.header__nav {
+  flex-grow: 1;
+}
+
+.header__nav__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+
+.header__nav__list__items__link {
+  position: relative;
+  font-size: 1.8rem;
+  font-weight: 500;
+
+  color: #042429;
+  transition: color .2s;
+}
+.header__nav__list__items__link:hover {
+  color: #1296aa;
+}
+.header__nav__list__items__link::after {
+  position: absolute;
+  bottom: 0;
+  left: 1px;
+  content: " ";
+  width: 0;
+  height: 2px;
+  background-color: #1296aa;
+  transition: 0.4s;
+}
+.header__nav__list__items__link:hover::after {
+  width: 99%;
+}
+
+.header .profile-link {
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  color: #042429;
+  border-radius: 50px;
+  border: 2px solid #042429;
+  height: 45px;
+  width: 45px;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+
+.header .profile-link:hover {
+  background-color: #042429;
+  color: #FFF;
+}
+
+/* Menu Hamburguer */
+.hamburguer-menu, .hamburguer-menu-container {
+  display: none;
+}
+
+.main {
+  display: grid;
+  place-items: center;
+  height: calc(100dvh - 80px);
+  background-color: var(--background-color);
+}
+
+.voting-machine {
+  display: flex;
+  width: 90%;
+  max-width: 1000px;
+  height: clamp(400px, 90%, 500px);
+  background-color: var(--ballot-box-background-color);
+  box-shadow: 25px 30px 55px rgba(173, 172, 172, 0.192);
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: var(--ballot-box-keyboard-color);
+  width: 350px;
+  height: 100%;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.keyboard_numbers {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  place-content: space-around;
+  row-gap: 20px;
+  width: 100%;
+}
+
+.keyboard_numbers button {
+  width: 100%;
+  aspect-ratio: 2 / 1.25;
+  background-color: var(--ballot-box-keyboard-button-color);
+  color: var(--light-text-color);
+  font-size: 30px;
+  border-radius: 5px;
+}
+
+.keyboard_numbers button:last-child {
+  grid-column: 2;
+}
+
+.keyboard_actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.keyboard_actions button {
+  color: var(--dark-text-color);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 5px;
+  width: 30%;
+  height: 45px;
+}
+.white-btn {
+  background-color: var(--ballot-box-white-button-color);
+}
+.correct-btn {
+  background-color: var(--ballot-box-correct-button-color);
+}
+.confirm-btn {
+  background-color: var(--ballot-box-confirm-button-color);
+}
+
+@media screen and (max-width: 560px) {
+  .header .refresh, .header__nav {
+    display: none;
+  }
+
+  .hamburguer-menu {
+    width: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    margin: auto 0;
+    box-sizing: border-box;
+    padding-block: 5px;
+  }
+
+  .menu-streak {
+    width: 40px;
+    height: 5px;
+    border-radius: 50px;
+    background-color: #042429;
+    transition: .3s;
+  }
+
+  #x-menu:checked + .hamburguer-menu > .menu-streak:first-child {
+    transform: translateY(12px) rotate(45deg);
+  }
+
+  #x-menu:checked + .hamburguer-menu > .menu-streak:nth-child(2) {
+    opacity: 0;
+  }
+
+  #x-menu:checked + .hamburguer-menu > .menu-streak:last-child {
+    transform: translateY(-12px) rotate(135deg);
+  }
+
+  .hamburguer-menu-container {
+    display: initial;
+  }
+
+  .hamburguer-nav {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 100dvh;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    background-color: #FFF;
+    transform: translateY(-100dvh);
+    transition: transform .5s;
+  }
+
+  .hamburguer-nav_list {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .hamburguer-nav_list_item > a {
+    color: #042429;
+  }
+}

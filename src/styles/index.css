@@ -135,11 +135,11 @@
 }
 
 #myCarousel > button > .carousel-control-prev-icon {
-  background-image: url(../img/left-arrow.png);
+  background-image: url(../assets/imgs/left-arrow.png);
 }
 
 #myCarousel > button > .carousel-control-next-icon {
-  background-image: url(../img/right-arrow.png);
+  background-image: url(../assets/imgs/right-arrow.png);
 }
 
 .carousel-item {
