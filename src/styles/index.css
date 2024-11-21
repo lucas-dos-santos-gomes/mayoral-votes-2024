@@ -96,7 +96,7 @@
   width: 100%;
   height: calc(100dvh - 80px);
 
-  background-image: url(../img/bg-sp-state.webp);
+  background-image: url(../assets/imgs/bg-sp-state.webp);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
