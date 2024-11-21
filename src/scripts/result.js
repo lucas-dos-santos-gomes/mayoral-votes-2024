@@ -5,5 +5,5 @@ verifyUser(true);
 const uid = JSON.parse(sessionStorage.getItem('uid'));
 
 
-const collectionName = '/voters/indicators/';
+const collectionName = '/voter/';
 countDocumentsInCollection(collectionName);

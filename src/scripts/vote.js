@@ -21,10 +21,10 @@ verifyUser(true);
 
 const collectionsToCheck = ['/voters/indicators/15/', '/voters/indicators/28/', '/voters/indicators/30/', '/voters/indicators/40/', '/voters/indicators/45/', '/voters/indicators/50/'];
 
-if(documentExistsInCollections(uid, collectionsToCheck)) {
-  painelVoting.classList.add('none');
-  painelEnd.classList.remove('none');
-}
+// if(documentExistsInCollections(uid, collectionsToCheck)) {
+//   painelVoting.classList.add('none');
+//   painelEnd.classList.remove('none');
+// }
 
 const keyAudio = new Audio('../assets/audios/key.wav');
 const confirmAudio = new Audio('../assets/audios/confirm.wav');
@@ -82,6 +82,6 @@ confirmBtn.addEventListener('click', async() => {
   painelVoting.classList.add('none');
   painelEnd.classList.remove('none');
   if(indicators[indicatorNumber]) {
-    await setDoc(doc(db, `/voters/indicators/${indicatorNumber}/`, uid), { vote: true });
+    await setDoc(doc(db, `/${indicatorNumber}/`, uid), { vote: true });
   }
 });
