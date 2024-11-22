@@ -1,46 +1,41 @@
 import {
-  doc,
-  setDoc,
-  getDoc,
-  updateDoc,
-  deleteDoc,
-
-  db,
-  auth,
-  signout,
-  verifyUser,
-  authError,
-  onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
-  signOut,
   setPersistence,
   browserLocalPersistence,
+  onAuthStateChanged,
+  auth,
+  authError,
+  signOut,
 } from "./config.mjs";
 
 onAuthStateChanged(auth, user => {
   if(user) {
     location.pathname = '/src/pages/vote.html';
+  } else {
+    sessionStorage.removeItem('user-creds');
   }
 });
 
 const signupForm = document.querySelector('.sign-up-container form');
 const signinForm = document.querySelector('.sign-in-container form');
 
-signupForm.onsubmit = ev => {
-  ev.preventDefault();
-  const name = ev.target[0];
-  const email = ev.target[1];
-  const password = ev.target[2];
+signupForm.onsubmit = event => {
+  event.preventDefault();
+  const name = event.target[0].value.trim();
+  const email = event.target[1].value.trim();
+  const password = event.target[2].value.trim();
 
-  createUserWithEmailAndPassword(auth, email.value.trim(), password.value).then(async credentials => {
-    await setDoc(doc(db, '/indicators/15/voters/', credentials.user.uid), { name: name.value, email: email.value });
-    console.log(credentials);
-    
-    await updateProfile(auth.currentUser, { displayName: name.value.trim() });
+  createUserWithEmailAndPassword(auth, email, password).then(async credentials => {
+    await updateProfile(auth.currentUser, { displayName: name });
+    const userCredentials = {
+      name: name,
+      email: email,
+      uid: credentials.user.uid,
+    }
+    sessionStorage.setItem('user-creds', JSON.stringify(userCredentials));
     alert('Cadastro realizado!');
-    sessionStorage.setItem('uid', JSON.stringify(credentials.user.uid));
     window.location.href = '/src/pages/vote.html';
   }).catch(error => {
     alert(authError(error.message));
@@ -48,19 +43,27 @@ signupForm.onsubmit = ev => {
   });
 }
 
-signinForm.onsubmit = ev => {
-  ev.preventDefault();
-  const email = ev.target[0];
-  const password = ev.target[1];
+signinForm.onsubmit = event => {
+  event.preventDefault();
+  const email = event.target[0].value.trim();
+  const password = event.target[1].value.trim();
 
-  setPersistence(auth, browserLocalPersistence).then(signInWithEmailAndPassword(auth, email.value, password.value).then(credentials => {
+  setPersistence(auth, browserLocalPersistence).then(signInWithEmailAndPassword(auth, email, password).then(credentials => {
+    const userCredentials = {
+      name: credentials.user.displayName,
+      email: credentials.user.email,
+      uid: credentials.user.uid,
+    }
+    sessionStorage.setItem('user-creds', JSON.stringify(userCredentials));
     alert('Login feito com sucesso!');
-    sessionStorage.setItem('uid', JSON.stringify(credentials.user.uid));
     window.location.href = '/src/pages/vote.html';
   }).catch(error => {
     btn.removeAttribute('disabled');
     alert("Não foi posssível fazer o login.");
     console.log(error);
     console.log(error.message);
-  })).catch(err => console.log(err));
+  })).catch(err => {
+    alert('Ocorreu um erro. Atualize a página e tente novamente.');
+    console.log(err)
+  });
 }

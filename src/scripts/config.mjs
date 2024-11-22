@@ -11,7 +11,16 @@ import {
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
-import { getFirestore, doc, setDoc, getDoc, updateDoc, deleteDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js"
+import { 
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  deleteDoc,
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js"
 
 const firebaseConfig = {
   apiKey: "AIzaSyBTe1r4WbFLP7gSTJ-zDAlQbhSBo1BZrfg",
@@ -26,8 +35,8 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
+// My functions
 function signout() {
-  sessionStorage.removeItem('user-info');
   sessionStorage.removeItem('user-creds');
   signOut(auth);
 }
@@ -37,13 +46,13 @@ function verifyUser(exit) {
     if(user) {
       console.log('Usuário autenticado:', user);
     } else {
-      sessionStorage.removeItem('uid');
+      sessionStorage.removeItem('user-creds');
       if(exit) location.pathname = '/src/pages/sign.html';
     }
   });
 }
 
-const authError = (messageError, isLogin) => {
+function authError(messageError, isLogin) {
   console.error(messageError);
   if(messageError.includes('(auth/invalid-credential)')) {
     return 'A credencial de autenticação fornecida está incorreta, malformada ou expirou.';
@@ -67,9 +76,9 @@ const authError = (messageError, isLogin) => {
 // Função para verificar a existência de um documento em várias coleções
 async function documentExistsInCollections(documentId, collections) {
   for (let collectionName of collections) {
-    const docRef = doc(db, collectionName, documentId);
+    const docRef = await doc(db, collectionName, documentId);
     const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
+    if(docSnap.exists()) {
       console.log(`Documento encontrado na coleção: ${collectionName}`);
       return true;
     }
@@ -80,36 +89,43 @@ async function documentExistsInCollections(documentId, collections) {
 
 async function countDocumentsInCollection(collectionName) {
   try {
-    const collectionRef = collection(db, collectionName);
+    const collectionRef = await collection(db, collectionName);
     const querySnapshot = await getDocs(collectionRef);
     const documentCount = querySnapshot.size;
-
-    // console.log(`Número de documentos na coleção ${collectionName}: ${documentCount}`);
     return documentCount;
-  } catch (error) {
+  } catch(error) {
     console.error('Erro ao contar documentos:', error);
+    return 0;
   }
 }
 
 export {
-  doc,
-  setDoc,
-  getDoc,
-  updateDoc,
-  deleteDoc,
-
-  db,
-  auth,
-  signout,
-  verifyUser,
-  authError,
-  onAuthStateChanged,
+  // Auth
+  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
   setPersistence,
   browserLocalPersistence,
+  onAuthStateChanged,
+
+  // Firestore
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  deleteDoc,
+
+  // Constants
+  db,
+  auth,
+  
+  // Functions
+  signout,
+  verifyUser,
+  authError,
+
   documentExistsInCollections,
   countDocumentsInCollection,
 };

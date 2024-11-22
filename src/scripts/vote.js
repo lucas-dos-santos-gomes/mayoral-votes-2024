@@ -1,5 +1,7 @@
 import { indicators } from "./indicators.mjs"
-import { signOut, auth, verifyUser, setDoc, doc, db, documentExistsInCollections } from "./config.mjs";
+import { signOut, auth, verifyUser, setDoc, doc, db, documentExistsInCollections, signout } from "./config.mjs";
+
+verifyUser(true);
 
 const profileLink = document.querySelector('.profile-link');
 const painelVoting = document.querySelector('.painel_voting');
@@ -13,27 +15,28 @@ const whiteBtn = document.querySelector('.white-btn');
 const correctBtn = document.querySelector('.correct-btn');
 const confirmBtn = document.querySelector('.confirm-btn');
 
-let indicatorNumber = '';
-
-const uid = JSON.parse(sessionStorage.getItem('uid'));
-
-verifyUser(true);
-
-const collectionsToCheck = ['/voters/indicators/15/', '/voters/indicators/28/', '/voters/indicators/30/', '/voters/indicators/40/', '/voters/indicators/45/', '/voters/indicators/50/'];
-
-// if(documentExistsInCollections(uid, collectionsToCheck)) {
-//   painelVoting.classList.add('none');
-//   painelEnd.classList.remove('none');
-// }
-
 const keyAudio = new Audio('../assets/audios/key.wav');
 const confirmAudio = new Audio('../assets/audios/confirm.wav');
 
+let indicatorNumber = '';
+
+const userCreds = JSON.parse(sessionStorage.getItem('user-creds'));
+const uid = userCreds.uid;
+
+async function blockPainel() {
+  const collectionsToCheck = ['/0/', '/15/', '/28/', '/30/', '/40/', '/45/', '/50/'];
+  const collectionDoc = await documentExistsInCollections(uid, collectionsToCheck)
+  if(collectionDoc) {
+    painelVoting.classList.add('none');
+    painelEnd.classList.remove('none');
+  }
+}
+blockPainel();
+
 profileLink.onclick = (e) => {
   e.preventDefault();
-  signOut(auth);
+  signout();
   alert('Você saiu da sua conta.');
-  sessionStorage.removeItem('uid');
   window.location.pathname = '/src/pages/sign.html';
 }
 
@@ -62,10 +65,11 @@ numberBtns.forEach(btn => {
   });
 });
 
-whiteBtn.addEventListener('click', () => {
+whiteBtn.addEventListener('click', async() => {
   confirmAudio.play();
   painelVoting.classList.add('none');
   painelEnd.classList.remove('none');
+  await setDoc(doc(db, `/0/`, uid), userCreds);
 });
 
 correctBtn.addEventListener('click', () => {
@@ -82,6 +86,8 @@ confirmBtn.addEventListener('click', async() => {
   painelVoting.classList.add('none');
   painelEnd.classList.remove('none');
   if(indicators[indicatorNumber]) {
-    await setDoc(doc(db, `/${indicatorNumber}/`, uid), { vote: true });
+    await setDoc(doc(db, `/${indicatorNumber}/`, uid), userCreds);
+  } else {
+    await setDoc(doc(db, `/0/`, uid), userCreds);
   }
 });
