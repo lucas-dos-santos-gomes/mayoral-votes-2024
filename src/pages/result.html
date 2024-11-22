@@ -3,10 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="../styles/result.css">
+  <link rel="shortcut icon" href="../assets/imgs/sp-black-icon.png" type="image/x-icon">
   <title>Resultado | Eleições SP</title>
 </head>
 <body>
-  <main class="container">
+  <header class="header">
+    <input type="checkbox" id="x-menu" class="none" />
+    <label for="x-menu" class="hamburguer-menu">
+      <span class="menu-streak"></span>
+      <span class="menu-streak"></span>
+      <span class="menu-streak"></span>
+    </label>
+    <a class="refresh" href="../../index.html">
+      <img class="logo" src="../assets/imgs/sp-black-icon-cutted.png" alt="Atualizar página" />
+    </a>
+    <nav class="header__nav">
+      <ul class="header__nav__list">
+        <li class="header__nav__list__items">
+          <a href="../../index.html" class="header__nav__list__items__link">Início</a>
+        </li>
+        <li class="header__nav__list__items">
+          <a href="../../index.html#myCarousel" class="header__nav__list__items__link">Candidatos</a>
+        </li>
+        <li class="header__nav__list__items">
+          <a href="./result.html" class="header__nav__list__items__link">Resultado</a>
+        </li>
+      </ul>
+    </nav>
+    <a class="vote-link" href="./vote.html"><i class="fa-solid fa-note-sticky"></i></a>
+  </header>
+
+  <!-- Menu Hamburguer -->
+  <div class="hamburguer-menu-container">
+    <nav class="hamburguer-nav">
+      <ul class="hamburguer-nav_list">
+        <li class="hamburguer-nav_list_item">
+          <a href="../../index.html#start">Início</a>
+        </li>
+        <li class="hamburguer-nav_list_item">
+          <a href="../../index.html#myCarousel">Candidatos</a>
+        </li>
+        <li class="hamburguer-nav_list_item">
+          <a href="./result.html">Resultado</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <main class="main">
     <h1>Total de votos</h1>
     <p>Ricardo Nunes: <span class="nmr-ricardo-nunes"></span></p>
     <p>Pablo Marçal: <span class="nmr-pablo-marcal"></span></p>
@@ -15,6 +62,7 @@
     <p>Datena: <span class="nmr-datena"></span></p>
     <p>Guilherme Boulos: <span class="nmr-guilherme-boulos"></span></p>
   </main> 
+  <script type="module" src="../scripts/menu.js"></script>
   <script type="module" src="../scripts/result.js"></script>
 </body>
 </html>

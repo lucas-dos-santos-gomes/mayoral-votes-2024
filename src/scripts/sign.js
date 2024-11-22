@@ -7,7 +7,6 @@ import {
   onAuthStateChanged,
   auth,
   authError,
-  signOut,
 } from "./config.mjs";
 
 onAuthStateChanged(auth, user => {

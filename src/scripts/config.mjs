@@ -46,6 +46,7 @@ function verifyUser(exit) {
     if(user) {
       console.log('Usuário autenticado:', user);
     } else {
+      console.log('Usuário não autenticado.');
       sessionStorage.removeItem('user-creds');
       if(exit) location.pathname = '/src/pages/sign.html';
     }

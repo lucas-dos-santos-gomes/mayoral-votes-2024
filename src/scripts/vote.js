@@ -1,6 +1,7 @@
 import { indicators } from "./indicators.mjs"
-import { signOut, auth, verifyUser, setDoc, doc, db, documentExistsInCollections, signout } from "./config.mjs";
+import { verifyUser, setDoc, doc, db, documentExistsInCollections, signout, signOut, auth } from "./config.mjs";
 
+if(!sessionStorage.getItem('user-creds')) signOut(auth);
 verifyUser(true);
 
 const profileLink = document.querySelector('.profile-link');
@@ -22,6 +23,7 @@ let indicatorNumber = '';
 
 const userCreds = JSON.parse(sessionStorage.getItem('user-creds'));
 const uid = userCreds.uid;
+
 
 async function blockPainel() {
   const collectionsToCheck = ['/0/', '/15/', '/28/', '/30/', '/40/', '/45/', '/50/'];
