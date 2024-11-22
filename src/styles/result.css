@@ -87,11 +87,14 @@
   text-transform: uppercase;
   cursor: pointer;
   margin-top: 20px;
-  transition: filter 150ms, box-shadow 150ms;
+  transition: filter 150ms, box-shadow 150ms, transform 150ms;
 }
 .reset-voting:hover {
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
   filter: brightness(1.3);
+}
+.reset-voting:active {
+  transform: scale(0.98);
 }
 
 @media screen and (max-width: 500px) {

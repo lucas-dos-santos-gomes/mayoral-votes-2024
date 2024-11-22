@@ -117,8 +117,10 @@ export {
   doc,
   setDoc,
   getDoc,
+  getDocs,
   updateDoc,
   deleteDoc,
+  collection,
 
   // Constants
   db,

@@ -1,5 +1,5 @@
 import { indicators } from "./indicators.mjs"
-import { verifyUser, countDocumentsInCollection } from "./config.mjs";
+import { verifyUser, countDocumentsInCollection, collection, getDocs, deleteDoc, doc, db } from "./config.mjs";
 
 verifyUser();
 
@@ -7,6 +7,7 @@ const indicatorImgs = document.querySelectorAll('.indicator-info img');
 const indicatorName = document.querySelectorAll('.indicator-info p');
 const indicatorBars = document.querySelectorAll('.indicator-bar');
 const indicatorVotePercentage = document.querySelectorAll('.vote-percent');
+const resetVoteBtn = document.querySelector('.reset-voting');
 
 let totalVotes = 0;
 let votes = [
@@ -35,7 +36,7 @@ function sortIndicators(votes, totalVotes) {
     indicatorImgs[index].src = `../assets/imgs/profile-${indicators[number].shortName.toLowerCase().replace(' ', '-').replace('ç', 'c')}.jpg`;
     indicatorName[index].innerHTML = indicators[number].shortName;
 
-    const votePercentage = (qtdVotes * 100 / totalVotes).toFixed(1);
+    const votePercentage = totalVotes && (qtdVotes * 100 / totalVotes).toFixed(1);
     indicatorVotePercentage[index].innerHTML = votePercentage + '%';
     
     if(totalVotes > 0) {
@@ -51,5 +52,38 @@ function sortIndicators(votes, totalVotes) {
 }
 
 countIndicatorVoters();
-
 setInterval(countIndicatorVoters, 3000);
+
+if(sessionStorage.getItem('user-creds')) {
+  const adminEmail = JSON.parse(sessionStorage.getItem('user-creds')).email;
+  if(adminEmail === 'lucasdev.programador@gmail.com' || adminEmail === 'joaovps48@uni9.edu.br') {
+    resetVoteBtn.classList.remove('none');
+  }
+}
+
+async function deleteCollection(collectionName) {
+  try {
+    const collectionRef = collection(db, collectionName);
+    const querySnapshot = await getDocs(collectionRef);
+
+    querySnapshot.forEach(async (docSnapshot) => {
+      await deleteDoc(doc(db, collectionName, docSnapshot.id));
+      console.log(`Documento com ID ${docSnapshot.id} deletado.`);
+    });
+
+    console.log(`Todos os documentos da coleção ${collectionName} foram deletados.`);
+  } catch (error) {
+    console.error('Erro ao deletar documentos:', error);
+  }
+}
+
+resetVoteBtn.onclick = () => {
+  deleteCollection('/0/');
+  deleteCollection('/15/');
+  deleteCollection('/28/');
+  deleteCollection('/30/');
+  deleteCollection('/40/');
+  deleteCollection('/45/');
+  deleteCollection('/50/');
+  indicatorBars.forEach(el => el.style.width = '0%');
+};
