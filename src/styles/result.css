@@ -67,6 +67,7 @@
   height: 20px;
   width: 0%;
   background-color: #042429;
+  transition: width 1s ease-in-out;
 }
 
 .vote-percent {
