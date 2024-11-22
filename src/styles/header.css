@@ -79,7 +79,7 @@
   font-weight: 500;
 }
 
-.profile-link, .vote-link {
+.profile-link {
   display: grid;
   place-items: center;
   font-size: 22px;
@@ -90,7 +90,7 @@
   width: 45px;
   transition: background-color 150ms ease-out, color 150ms ease-out;
 }
-.profile-link:hover, .vote-link:hover {
+.profile-link:hover {
   background-color: #042429;
   color: #FFF;
 }

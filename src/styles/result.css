@@ -1,0 +1,93 @@
+:root {
+  --background-color: #333333;
+  --ballot-box-background-color:#dcdde1;
+}
+
+.main {
+  display: grid;
+  place-items: center;
+  min-height: calc(100dvh - 80px);
+  background-color: var(--background-color);
+  padding: 20px;
+}
+
+.voting-container {
+  background-color: var(--ballot-box-background-color);
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px 30px;
+  border-radius: 20px;
+}
+
+.voting-container h1 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.indicators-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.indicator-info {
+  display: grid;
+  place-items: center;
+  gap: 5px;
+  width: 100px;
+}
+
+.indicator-info img {
+  width: 50px;
+  border-radius: 50px;
+}
+
+.indicator-info p {
+  font-size: 14px;
+  text-align: center;
+}
+
+.indicator-votes {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-grow: 1;
+}
+
+.indicator-bar {
+  display: inline-block;
+  height: 20px;
+  width: 0%;
+  background-color: #042429;
+}
+
+.vote-percent {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 500px) {
+  .main {
+    padding: 10px;
+  }
+  .voting-container {
+    padding: 20px 15px;
+  }
+  .indicator, .indicator-votes {
+    gap: 5px;
+  }
+  .indicator-info {
+    width: 80px;
+  }
+  .indicator-info p {
+    font-size: 12px;
+  }
+}
