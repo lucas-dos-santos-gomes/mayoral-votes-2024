@@ -9,14 +9,6 @@ import {
   authError,
 } from "./config.mjs";
 
-onAuthStateChanged(auth, user => {
-  if(user) {
-    location.pathname = '/src/pages/vote.html';
-  } else {
-    sessionStorage.removeItem('user-creds');
-  }
-});
-
 const signupForm = document.querySelector('.sign-up-container form');
 const signinForm = document.querySelector('.sign-in-container form');
 
